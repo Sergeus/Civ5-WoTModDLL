@@ -820,6 +820,203 @@ void CvMap::DoDropHornOfValere(CvUnit* pUnit)
 	}
 }
 
+void CvMap::ReconstructPlot(CvPlot* pPlot)
+{
+	//if (!pPlot)
+	//	return;
+
+	//int iX = pPlot->getX(), iY = pPlot->getY();
+
+	//CvPlot* pNewPlot = FNEW(CvPlot(), c_eCiv5GameplayDLL, 0);
+	//pNewPlot->init(pPlot->getX(), pPlot->getY());
+
+	//int index = plotNum(iX, iY);
+
+	//short* pYields					= m_pYields;
+	//int*   pFoundValue				= m_pFoundValue;
+	//char*  pPlayerCityRadiusCount   = m_pPlayerCityRadiusCount;
+	//short* pVisibilityCount			= m_pVisibilityCount;
+	//char*  pRevealedOwner			= m_pRevealedOwner;
+	//short* pRevealedImprovementType = m_pRevealedImprovementType;
+	//short* pRevealedRouteType		= m_pRevealedRouteType;
+	//bool*  pNoSettling				= m_pNoSettling;
+	//bool*  pResourceForceReveal		= m_pResourceForceReveal;
+
+
+	//(*pNewPlot).m_aiYield				= pYields;
+	//(*pNewPlot).m_aiFoundValue			= pFoundValue;
+	//(*pNewPlot).m_aiPlayerCityRadiusCount= pPlayerCityRadiusCount;
+	//(*pNewPlot).m_aiVisibilityCount		= pVisibilityCount;
+	//(*pNewPlot).m_aiRevealedOwner		= pRevealedOwner;
+
+	//(*pNewPlot).m_aeRevealedImprovementType	= pRevealedImprovementType;
+	//(*pNewPlot).m_aeRevealedRouteType		= pRevealedRouteType;
+	//(*pNewPlot).m_abNoSettling				= pNoSettling;
+
+	//(*pNewPlot).m_abResourceForceReveal		= pResourceForceReveal;
+
+	//(*pNewPlot).m_iArea = pPlot->m_iArea;
+	//pNewPlot->m_iFeatureVariety = pPlot->m_iFeatureVariety;
+	//pNewPlot->m_iOwnershipDuration = pPlot->m_iOwnershipDuration;
+	//pNewPlot->m_iImprovementDuration = pPlot->m_iImprovementDuration;
+	//pNewPlot->m_iUpgradeProgress = pPlot->m_iUpgradeProgress;
+	//pNewPlot->m_iCulture = pPlot->m_iCulture;
+	//pNewPlot->m_iNumMajorCivsRevealed = pPlot->m_iNumMajorCivsRevealed;
+	//pNewPlot->m_iCityRadiusCount = pPlot->m_iCityRadiusCount;
+	//pNewPlot->m_iReconCount = pPlot->m_iReconCount;
+	//pNewPlot->m_iRiverCrossingCount = pPlot->m_iRiverCrossingCount;
+	//pNewPlot->m_iResourceNum = pPlot->m_iResourceNum;
+	//pNewPlot->m_cBuilderAIScratchPadPlayer = pPlot->m_cBuilderAIScratchPadPlayer;
+	//pNewPlot->m_sBuilderAIScratchPadTurn = pPlot->m_sBuilderAIScratchPadTurn;
+
+	//	pNewPlot->m_sBuilderAIScratchPadValue = pPlot->m_sBuilderAIScratchPadValue;
+	//	pNewPlot->m_eBuilderAIScratchPadRoute = pPlot->m_eBuilderAIScratchPadRoute;
+
+	//pNewPlot->m_iLandmass = pPlot->m_iLandmass;
+	//pNewPlot->m_uiTradeRouteBitFlags = pPlot->m_uiTradeRouteBitFlags;
+
+
+	//pNewPlot->m_bStartingPlot = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bHills = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bNEOfRiver = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bWOfRiver = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bNWOfRiver = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bPotentialCityWork = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bImprovementPillaged = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bRoutePillaged = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bBarbCampNotConverting = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bRoughFeature = pPlot->m_bStartingPlot;
+	//pNewPlot->m_bResourceLinkedCityActive = pPlot->m_bStartingPlot;
+	//	pNewPlot->m_bImprovedByGiftFromMajor = pPlot->m_bStartingPlot;
+
+	//// ----------------------------------------------------------------
+	//// WoTMod Addition
+	//// ----------------------------------------------------------------
+	//pNewPlot->m_bHornOfValere = pPlot->m_bStartingPlot;
+
+	//// m_bPlotLayoutDirty not saved
+	//// m_bLayoutStateWorked not saved
+
+	//pNewPlot->m_eOwner = pPlot->m_eOwner;
+	//pNewPlot->m_ePlotType = pPlot->m_ePlotType;
+	//pNewPlot->m_eTerrainType = pPlot->m_eTerrainType;
+	//pNewPlot->m_eFeatureType = pPlot->m_eFeatureType;
+
+	//	pNewPlot->m_eResourceType = pPlot->m_eResourceType;
+
+	//pNewPlot->m_eImprovementType = pPlot->m_eImprovementType;
+	//pNewPlot->m_ePlayerResponsibleForImprovement = pPlot->m_ePlayerResponsibleForImprovement;
+	//pNewPlot->m_ePlayerResponsibleForRoute = pPlot->m_ePlayerResponsibleForRoute;
+	//pNewPlot->m_ePlayerThatClearedBarbCampHere = pPlot->m_ePlayerThatClearedBarbCampHere;
+	//pNewPlot->m_eRouteType = pPlot->m_eRouteType;
+	//pNewPlot->m_eWorldAnchor = pPlot->m_eWorldAnchor;
+	//pNewPlot->m_cWorldAnchorData = pPlot->m_cWorldAnchorData;
+
+	//pNewPlot->m_eRiverEFlowDirection = pPlot->m_eRiverEFlowDirection;
+	//pNewPlot->m_eRiverSEFlowDirection = pPlot->m_eRiverSEFlowDirection;
+	//pNewPlot->m_eRiverSWFlowDirection = pPlot->m_eRiverSWFlowDirection;
+
+	//pNewPlot->m_plotCity.eOwner = pPlot->m_plotCity.eOwner;
+	//pNewPlot->m_plotCity.iID = pPlot->m_plotCity.iID;
+	//pNewPlot->m_workingCity.eOwner = pPlot->m_workingCity.eOwner;
+	//pNewPlot->m_workingCity.iID = pPlot->m_workingCity.iID;
+	//pNewPlot->m_workingCityOverride.eOwner = pPlot->m_workingCityOverride.eOwner;
+	//pNewPlot->m_workingCityOverride.iID = pPlot->m_workingCityOverride.iID;
+	//pNewPlot->m_ResourceLinkedCity.eOwner = pPlot->m_ResourceLinkedCity.eOwner;
+	//pNewPlot->m_ResourceLinkedCity.iID = pPlot->m_ResourceLinkedCity.iID;
+	//pNewPlot->m_purchaseCity.eOwner = pPlot->m_purchaseCity.eOwner;
+	//pNewPlot->m_purchaseCity.iID = pPlot->m_purchaseCity.iID;
+
+	//	for(uint i = 0; i < NUM_YIELD_TYPES; i++)
+	//		pNewPlot->m_aiYield[i] = pPlot->m_aiYield[i];
+
+	//for(uint i = 0; i < REALLY_MAX_PLAYERS; i++)
+	//	pNewPlot->m_aiFoundValue[i];
+
+	//for(uint i = 0; i < REALLY_MAX_PLAYERS; i++)
+	//	pNewPlot->m_aiPlayerCityRadiusCount[i];
+
+	//for(uint i = 0; i < REALLY_MAX_TEAMS; i++)
+	//{
+	//	pNewPlot->m_aiVisibilityCount[i];
+	//	if (m_aiVisibilityCount[i] < 0)
+	//		m_aiVisibilityCount[i] = 0;
+	//}
+
+	//for(uint i = 0; i < REALLY_MAX_TEAMS; i++)
+	//	pNewPlot->m_aiRevealedOwner[i];
+
+	//pNewPlot->m_cRiverCrossing;
+
+	//	for(uint i = 0; i<PlotBoolField::eCount; ++i)
+	//	{
+	//		pNewPlot->m_bfRevealed.m_dwBits[i];
+	//	}
+
+	//for(uint i = 0; i < REALLY_MAX_TEAMS; i++)
+	//	kStream >> m_abResourceForceReveal[i];
+
+	//// m_abTEMPDEBUGResourceAlreadyRevealed not saved
+	//if(uiVersion < 2)
+	//{
+	//	bool bNotSerialized[REALLY_MAX_TEAMS];
+	//	kStream >> bNotSerialized;
+	//}
+	//for(uint i = 0; i < REALLY_MAX_TEAMS; i++)
+	//	kStream >> m_aeRevealedImprovementType[i];
+
+	//for(uint i = 0; i < REALLY_MAX_TEAMS; i++)
+	//	kStream >> m_aeRevealedRouteType[i];
+
+	//for(uint i = 0; i < MAX_MAJOR_CIVS; i++)
+	//	kStream >> m_abNoSettling[i];
+
+	//bool hasScriptData = false;
+	//kStream >> hasScriptData;
+	//if(hasScriptData)
+	//{
+	//	std::string scriptData;
+	//	kStream >> scriptData;
+	//	setScriptData(scriptData.c_str());
+	//}
+
+	//SAFE_DELETE_ARRAY(m_paiBuildProgress);
+	//kStream >> iCount;
+	//if(iCount > 0)
+	//{
+	//	m_paiBuildProgress = FNEW(short[iCount], c_eCiv5GameplayDLL, 0);
+
+	//	if(uiVersion >= 7)
+	//	{
+	//		BuildArrayHelpers::Read(kStream, m_paiBuildProgress);
+	//	}
+	//	else
+	//	{
+	//		ArrayWrapper<short> wrapm_paiBuildProgress(25, m_paiBuildProgress);
+	//		kStream >> wrapm_paiBuildProgress;
+	//	}
+	//}
+
+	//	kStream >> m_apaiInvisibleVisibilityCount;
+
+
+	////m_units.Read(kStream);
+	//UINT uLength;
+	//kStream >> uLength;
+	//for(UINT uIdx = 0; uIdx < uLength; ++uIdx)
+	//{
+	//	IDInfo  Data;
+
+	//	kStream >> Data.eOwner;
+	//	kStream >> Data.iID;
+
+	//	m_units.insertAtEnd(&Data);
+	//}
+
+	//kStream >> m_cContinentType;
+	
+}
+
 
 //	--------------------------------------------------------------------------------
 CvPlot* CvMap::syncRandPlot(int iFlags, int iArea, int iMinUnitDistance, int iTimeout)

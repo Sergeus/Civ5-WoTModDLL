@@ -242,6 +242,10 @@ int CvLuaEnums::pRegister(lua_State* L)
 	RegisterEnum(FEATURE_FLOOD_PLAINS);
 	RegisterEnum(FEATURE_FOREST);
 	RegisterEnum(FEATURE_FALLOUT);
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	RegisterEnum(FEATURE_BLIGHT);
 	RegisterEnum(NUM_FEATURE_TYPES);
 	EnumEnd(L);
 

@@ -57,7 +57,7 @@ public:
 
 	void setupGraphical();
 
-	void refreshPlotGraphics();
+	void refreshPlotGraphics(int i);
 
 	void erase();
 
@@ -824,6 +824,9 @@ protected:
 	// WoTMod Addition
 	// ----------------------------------------------------------------
 	bool m_bHornOfValere:1;
+
+	bool m_bIsFakingFeatureGraphics;
+	int m_iFakeResourceID;
 
 	void processArea(CvArea* pArea, int iChange);
 	void doImprovementUpgrade();

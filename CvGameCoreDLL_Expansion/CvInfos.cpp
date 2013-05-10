@@ -4664,7 +4664,11 @@ CvFeatureInfo::CvFeatureInfo() :
 	m_piHillsYieldChange(NULL),
 	m_pi3DAudioScriptFootstepIndex(NULL),
 	m_pbTerrain(NULL),
-	m_bClearable(false)
+	m_bClearable(false),
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	m_strResourceArtTag(NULL)
 {
 }
 //------------------------------------------------------------------------------
@@ -4899,6 +4903,19 @@ const char* CvFeatureInfo::getEffectTypeTag() const
 	return m_strEffectTypeTag;
 }
 
+// ----------------------------------------------------------------
+// WoTMod Addition
+// ----------------------------------------------------------------
+const char* CvFeatureInfo::GetResourceArtTag() const
+{
+	return m_strResourceArtTag;
+}
+
+void CvFeatureInfo::SetResourceArtTag(const char* szTag)
+{
+	m_strResourceArtTag = szTag;
+}
+
 //------------------------------------------------------------------------------
 bool CvFeatureInfo::CacheResults(Database::Results& kResults, CvDatabaseUtility& kUtility)
 {
@@ -4907,6 +4924,12 @@ bool CvFeatureInfo::CacheResults(Database::Results& kResults, CvDatabaseUtility&
 
 	const char* szArtDefineTag = kResults.GetText("ArtDefineTag");
 	setArtDefineTag(szArtDefineTag);
+
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	const char* szResourceArtTag = kResults.GetText("ResourceArtTag");
+	SetResourceArtTag(szResourceArtTag);
 
 	// Basic properties
 	m_iStartingLocationWeight = kResults.GetInt("StartingLocationWeight");

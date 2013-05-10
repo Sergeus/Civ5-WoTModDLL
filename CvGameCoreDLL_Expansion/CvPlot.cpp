@@ -197,6 +197,12 @@ void CvPlot::reset(int iX, int iY, bool bConstructorCall)
 	m_eRiverSWFlowDirection = NO_FLOWDIRECTION;
 	m_cRiverCrossing = 0;
 
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	m_bIsFakingFeatureGraphics = false;
+	m_iFakeResourceID = -1;
+
 	m_cBuilderAIScratchPadPlayer = 0;
 	m_sBuilderAIScratchPadTurn = 0;
 	m_sBuilderAIScratchPadValue = 0;
@@ -528,7 +534,7 @@ void CvPlot::updateVisibility()
 }
 
 //	--------------------------------------------------------------------------------
-void CvPlot::refreshPlotGraphics()
+void CvPlot::refreshPlotGraphics(int i)
 {
 	if(!GC.IsGraphicsInitialized())
 	{
@@ -542,11 +548,19 @@ void CvPlot::refreshPlotGraphics()
 	//gDLL->DoMapSetup(GC.getMap().numPlots());
 	auto_ptr<ICvPlot1> pDllPlot(new CvDllPlot(this));
 
-	gDLL->GameplayPlotStateChange(pDllPlot.get(), ResourceTypes::NO_RESOURCE, ImprovementTypes::NO_IMPROVEMENT, 0, RouteTypes::NO_ROUTE, 0);
+	//gDLL->GameplayPlotStateChange(pDllPlot.get(), ResourceTypes::NO_RESOURCE, ImprovementTypes::NO_IMPROVEMENT, 0, RouteTypes::NO_ROUTE, 0);
+
+	gDLL->GameplayFeatureChanged(pDllPlot.get(), (FeatureTypes)i);
+
+	//gDLL->GameplayNaturalWonderRevealed(pDllPlot.get());
+
+	//gDLL->DoMapSetup(GC.getMap().getGridWidth() * GC.getMap().getGridHeight());
 
 	GC.getMap().updateLayout(false);
 
 	GC.getMap().setupGraphical();
+
+	//updateVisibility();
 
 	//updateLayout(false);
 }
@@ -5751,6 +5765,23 @@ void CvPlot::setFeatureType(FeatureTypes eNewValue, int iVariety)
 		auto_ptr<ICvPlot1> pDllPlot(new CvDllPlot(this));
 		gDLL->GameplayFeatureChanged(pDllPlot.get(), eNewValue);
 
+		// ----------------------------------------------------------------
+		// WoTMod Addition
+		// ----------------------------------------------------------------
+		if (GC.getFeatureInfo(getFeatureType())->GetResourceArtTag() != NULL)
+		{
+			int numResInfos = GC.getNumResourceInfos();
+			const char* szRes = GC.getFeatureInfo(getFeatureType())->GetResourceArtTag();
+			for (int i=0; i < numResInfos; i++)
+			{
+				const char* resString = GC.getResourceInfo((ResourceTypes)i)->GetType();
+				if (strcmp(resString, szRes))
+				{
+					//SetFakingFeatureGraphics(i);
+				}
+			}
+		}
+
 		m_eFeatureType = eNewValue;
 
 		updateYield();
@@ -9512,6 +9543,20 @@ void CvPlot::read(FDataStream& kStream)
 		int dummy;
 		kStream >> dummy;
 	}
+
+	if (getX() == 25 && getY() == 13) 
+	{
+		for (int i=0; i < GC.getNumFeatureInfos(); i++)
+		{
+			CvFeatureInfo* info = GC.getFeatureInfo((FeatureTypes)i);
+
+			if (strcmp(info->GetType(), "FEATURE_BLIGHT"))
+			{
+				m_eFeatureType = info->GetID();
+				
+			}
+		}
+	}
 }
 
 //	--------------------------------------------------------------------------------
@@ -9705,6 +9750,29 @@ void CvPlot::updateLayout(bool bDebug)
 	FogOfWarModeTypes eFOWMode = GetActiveFogOfWarMode();
 
 	ResourceTypes eThisResource = (isCity() || eFOWMode == FOGOFWARMODE_UNEXPLORED) ? NO_RESOURCE : getResourceType(eActiveTeam);
+
+	//if (GC.getFeatureInfo(getFeatureType())->GetResourceArtTag() != NULL
+	//	&& !(isCity() || eFOWMode == FOGOFWARMODE_UNEXPLORED))
+	//{
+	//	int numResInfos = GC.getNumResourceInfos();
+	//	const char* szRes = GC.getFeatureInfo(getFeatureType())->GetResourceArtTag();
+	//	for (int i=0; i < numResInfos; i++)
+	//	{
+	//		const char* resString = GC.getResourceInfo((ResourceTypes)i)->GetType();
+	//		if (strcmp(resString, szRes))
+	//		{
+	//			eThisResource = (ResourceTypes)i;
+	//		}
+	//	}
+	//}
+
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	if (IsFakingFeatureGraphics())
+	{
+		eThisResource = GetFakedResourceID();
+	}
 
 	ImprovementTypes eThisImprovement = getRevealedImprovementType(eActiveTeam, bDebug);
 	bool bShowHalfBuilt = false;

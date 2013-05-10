@@ -1437,6 +1437,12 @@ public:
 	const char* getArtDefineTag() const;
 	void setArtDefineTag(const char* szTag);
 
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	const char* GetResourceArtTag() const;
+	void SetResourceArtTag(const char* szTag);
+
 	int getWorldSoundscapeScriptId() const;
 	const char* getEffectTypeTag() const;
 
@@ -1498,6 +1504,11 @@ protected:
 	CvString m_strEffectType;
 	int m_iEffectProbability;
 	CvString m_strEffectTypeTag;		// Effect type for effect macros
+
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	CvString m_strResourceArtTag;
 
 	// Arrays
 	int* m_piYieldChange;

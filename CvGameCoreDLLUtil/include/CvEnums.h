@@ -1082,6 +1082,10 @@ enum FeatureTypes
 	FEATURE_FOREST,
 	FEATURE_FALLOUT,
 	FEATURE_NATURAL_WONDER,
+	// ----------------------------------------------------------------
+	// WoTMod Addition
+	// ----------------------------------------------------------------
+	FEATURE_BLIGHT,
 
 	NUM_FEATURE_TYPES
 };

@@ -293,7 +293,9 @@ int CvLuaPlot::lRefreshGraphics(lua_State* L)
 {
 	CvPlot* pkPlot = GetInstance(L);
 
-	pkPlot->refreshPlotGraphics();
+	const int i = lua_tointeger(L, 2);
+
+	pkPlot->refreshPlotGraphics(i);
 
 	return 0;
 }
